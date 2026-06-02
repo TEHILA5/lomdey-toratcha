@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>שיעורי תורה – לומדי תורתך לשמה</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="navbar">
+      <div class="logo">
+        <div class="logo-placeholder"><span class="logo-icon">
+                      <img src="../images/logo.png" alt="לומדי תורתך לשמה" class="logo-img" />
+        </span></div>
+        <span class="logo-text">לומדי תורתך לשמה</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html">בית</a></li>
+        <li><a href="about.html">אודות</a></li>
+        <li><a href="shiurim.html" class="active">שיעורי תורה</a></li>
+        <li><a href="gallery.html">גלריה</a></li>
+        <li><a href="contact.html">צור קשר</a></li>
+      </ul>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">בית</a>
+      <a href="about.html">אודות</a>
+      <a href="shiurim.html">שיעורי תורה</a>
+      <a href="gallery.html">גלריה</a>
+      <a href="contact.html">צור קשר</a>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <h1>שיעורי תורה</h1>
+    <p>הרצאות ושיעורים מפי מרצים מובילים – לצפייה חינם בכל עת</p>
+  </div>
+
+  <section class="shiurim-section">
+    <div class="container">
+
+      <div class="section-title" style="margin-bottom: 48px;">
+        <span class="ornament">❧</span>
+        <h2>שיעורים אחרונים</h2>
+        <span class="ornament">❧</span>
+      </div>
+
+      <div class="shiurim-grid">
+
+        <!-- כדי להוסיף וידאו יוטיוב: החלף את ה-video-placeholder ב:
+             <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+        -->
+
+        <div class="shiur-card">
+          <div class="video-container">
+            <div class="video-placeholder">
+              <span class="play-icon">▶</span>
+              <span>וידאו יוטיוב – יש להוסיף</span>
+            </div>
+          </div>
+          <div class="shiur-info">
+            <h3>פרשת השבוע – לך לך</h3>
+            <div class="meta">📅 כ"ד תשרי תשפ"ה &nbsp;|&nbsp; 👤 הרב ישראל כהן</div>
+            <p>שיעור מרתק על עקידת יצחק ואמונתו של אברהם אבינו</p>
+          </div>
+        </div>
+
+        <div class="shiur-card">
+          <div class="video-container">
+            <div class="video-placeholder">
+              <span class="play-icon">▶</span>
+              <span>וידאו יוטיוב – יש להוסיף</span>
+            </div>
+          </div>
+          <div class="shiur-info">
+            <h3>הלכות שבת – מבוא</h3>
+            <div class="meta">📅 י"ב חשוון תשפ"ה &nbsp;|&nbsp; 👤 הרבנית מרים לוי</div>
+            <p>סקירה מקיפה של ל"ט מלאכות השבת והשלכותיהן המעשיות</p>
+          </div>
+        </div>
+
+        <div class="shiur-card">
+          <div class="video-container">
+            <div class="video-placeholder">
+              <span class="play-icon">▶</span>
+              <span>וידאו יוטיוב – יש להוסיף</span>
+            </div>
+          </div>
+          <div class="shiur-info">
+            <h3>אמונה בעת קשיים</h3>
+            <div class="meta">📅 ג' כסלו תשפ"ה &nbsp;|&nbsp; 👤 הרב דוד שפירא</div>
+            <p>כיצד מתמודדים עם מסות ואתגרים מתוך אמונה שלמה בה'</p>
+          </div>
+        </div>
+
+        <div class="shiur-card">
+          <div class="video-container">
+            <div class="video-placeholder">
+              <span class="play-icon">▶</span>
+              <span>וידאו יוטיוב – יש להוסיף</span>
+            </div>
+          </div>
+          <div class="shiur-info">
+            <h3>חנוכה – אור מתוך חשכה</h3>
+            <div class="meta">📅 כ"ה כסלו תשפ"ה &nbsp;|&nbsp; 👤 הרבנית רחל גולדברג</div>
+            <p>שיעור לחנוכה על עניין הנס ומשמעותו לדורנו</p>
+          </div>
+        </div>
+
+        <div class="shiur-card">
+          <div class="video-container">
+            <div class="video-placeholder">
+              <span class="play-icon">▶</span>
+              <span>וידאו יוטיוב – יש להוסיף</span>
+            </div>
+          </div>
+          <div class="shiur-info">
+            <h3>תפילה – שיח לב</h3>
+            <div class="meta">📅 ה' טבת תשפ"ה &nbsp;|&nbsp; 👤 הרב אברהם צוקרמן</div>
+            <p>על מהות התפילה וכיצד להתחבר אליה מתוך כוונה אמיתית</p>
+          </div>
+        </div>
+
+        <div class="shiur-card">
+          <div class="video-container">
+            <div class="video-placeholder">
+              <span class="play-icon">▶</span>
+              <span>וידאו יוטיוב – יש להוסיף</span>
+            </div>
+          </div>
+          <div class="shiur-info">
+            <h3>מידות טובות ביומיום</h3>
+            <div class="meta">📅 י"ח טבת תשפ"ה &nbsp;|&nbsp; 👤 הרבנית שרה פרידמן</div>
+            <p>כיצד מכניסים מידות טובות לשגרת החיים המודרנית</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="add-video-note">
+        <p>🎬 <strong>כיצד להוסיף וידאו?</strong><br />
+        העלו את הסרטון ליוטיוב, העתיקו את מזהה הסרטון (VIDEO_ID מהקישור),
+        והחליפו את ה-<code>video-placeholder</code> בתג iframe עם כתובת:<br />
+        <code>https://www.youtube.com/embed/VIDEO_ID</code></p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-logo"><span class="logo-icon">✡</span> לומדי תורתך לשמה</div>
+      <p class="footer-tagline">מפיצים אור תורה לכל בית ישראל</p>
+      <div class="footer-links">
+        <a href="../index.html">בית</a>
+        <a href="about.html">אודות</a>
+        <a href="shiurim.html">שיעורי תורה</a>
+        <a href="gallery.html">גלריה</a>
+        <a href="contact.html">צור קשר</a>
+      </div>
+      <p class="footer-copy">© כל הזכויות שמורות לתהילה אלון | <a href="mailto:tehila54345@gmail.com">tehila54345@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

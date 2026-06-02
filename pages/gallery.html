@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>גלריה – לומדי תורתך לשמה</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 80vh; border-radius: 8px; }
+    .lightbox-close {
+      position: absolute;
+      top: 24px; left: 24px;
+      color: white;
+      font-size: 32px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .gallery-item img { cursor: pointer; }
+    .gallery-category {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 22px;
+      color: var(--brown);
+      margin: 48px 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .gallery-category::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(201,168,76,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="navbar">
+      <div class="logo">
+        <div class="logo-placeholder"><span class="logo-icon">
+                      <img src="../images/logo.png" alt="לומדי תורתך לשמה" class="logo-img" />
+        </span></div>
+        <span class="logo-text">לומדי תורתך לשמה</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html">בית</a></li>
+        <li><a href="about.html">אודות</a></li>
+        <li><a href="shiurim.html">שיעורי תורה</a></li>
+        <li><a href="gallery.html" class="active">גלריה</a></li>
+        <li><a href="contact.html">צור קשר</a></li>
+      </ul>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">בית</a>
+      <a href="about.html">אודות</a>
+      <a href="shiurim.html">שיעורי תורה</a>
+      <a href="gallery.html">גלריה</a>
+      <a href="contact.html">צור קשר</a>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <h1>גלריית תמונות</h1>
+    <p>רגעים מיוחדים מפעילות העמותה</p>
+  </div>
+
+  <section class="gallery-section">
+    <div class="container">
+
+      <h3 class="gallery-category">📸 אירועים ושיעורים</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item">📷<span>תמונה – יש להוסיף</span></div>
+        <div class="gallery-item">📷<span>תמונה – יש להוסיף</span></div>
+        <div class="gallery-item">📷<span>תמונה – יש להוסיף</span></div>
+        <div class="gallery-item">📷<span>תמונה – יש להוסיף</span></div>
+        <div class="gallery-item">📷<span>תמונה – יש להוסיף</span></div>
+        <div class="gallery-item">📷<span>תמונה – יש להוסיף</span></div>
+      </div>
+
+      <h3 class="gallery-category">🎉 כנסים ויום עיון</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item">📷<span>תמונה – יש להוסיף</span></div>
+        <div class="gallery-item">📷<span>תמונה – יש להוסיף</span></div>
+        <div class="gallery-item">📷<span>תמונה – יש להוסיף</span></div>
+        <div class="gallery-item">📷<span>תמונה – יש להוסיף</span></div>
+      </div>
+
+      <div class="gallery-note">
+        <p>📌 <strong>כיצד להוסיף תמונות?</strong><br />
+        החליפו כל <code>gallery-item</code> בתג img עם נתיב התמונה שלכם:<br />
+        <code>&lt;div class="gallery-item"&gt;&lt;img src="../images/photo1.jpg" alt="תיאור"&gt;&lt;/div&gt;</code><br />
+        ניתן לאחסן תמונות בתיקייה <code>images/</code> בתוך תיקיית הפרויקט.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-logo"><span class="logo-icon">✡</span> לומדי תורתך לשמה</div>
+      <p class="footer-tagline">מפיצים אור תורה לכל בית ישראל</p>
+      <div class="footer-links">
+        <a href="../index.html">בית</a>
+        <a href="about.html">אודות</a>
+        <a href="shiurim.html">שיעורי תורה</a>
+        <a href="gallery.html">גלריה</a>
+        <a href="contact.html">צור קשר</a>
+      </div>
+      <p class="footer-copy">© כל הזכויות שמורות לתהילה אלון | <a href="mailto:tehila54345@gmail.com">tehila54345@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      img.addEventListener('click', () => openLightbox(img.src));
+    });
+  </script>
+</body>
+</html>
