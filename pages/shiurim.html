@@ -8,12 +8,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
+
+  <!-- ── HEADER ── -->
   <header class="site-header">
     <nav class="navbar">
       <div class="logo">
-        <div class="logo-placeholder"><span class="logo-icon">
-                      <img src="../images/logo.png" alt="לומדי תורתך לשמה" class="logo-img" />
-        </span></div>
+        <div class="logo-placeholder">
+          <span class="logo-icon">
+            <img src="../images/logo.png" alt="לומדי תורתך לשמה" class="logo-img" />
+          </span>
+        </div>
         <span class="logo-text">לומדי תורתך לשמה</span>
       </div>
       <ul class="nav-links">
@@ -34,111 +38,56 @@
     </div>
   </header>
 
+  <!-- ── PAGE HERO ── -->
   <div class="page-hero">
     <h1>שיעורי תורה</h1>
     <p>הרצאות ושיעורים מפי מרצים מובילים – לצפייה חינם בכל עת</p>
   </div>
 
+  <!-- ── סרגל מיון / סינון ── -->
+  <div class="controls-bar">
+    <div class="controls-inner">
+      <div class="controls-right">
+
+        <span class="controls-label">מיון:</span>
+        <div class="sort-btn-group">
+          <button class="sort-btn active" data-sort="newest" onclick="setSort(this,'newest')">חדש לישן</button>
+          <button class="sort-btn"        data-sort="oldest" onclick="setSort(this,'oldest')">ישן לחדש</button>
+          <button class="sort-btn"        data-sort="title"  onclick="setSort(this,'title')">לפי שם</button>
+        </div>
+
+        <span class="controls-label">מרצה:</span>
+        <select class="filter-select" id="lecturerFilter" onchange="applyFilters()">
+          <option value="">כל המרצים</option>
+        </select>
+
+        <input class="search-input" id="searchInput" type="text"
+               placeholder="🔍 חיפוש חופשי..." oninput="applyFilters()" />
+      </div>
+
+      <span class="results-count" id="resultsCount"></span>
+    </div>
+  </div>
+
+  <!-- ── SHIURIM GRID ── -->
   <section class="shiurim-section">
     <div class="container">
-
-      <div class="section-title" style="margin-bottom: 48px;">
+      <div class="section-title" style="margin-bottom: 36px;">
         <span class="ornament">❧</span>
         <h2>שיעורים אחרונים</h2>
         <span class="ornament">❧</span>
       </div>
 
-      <div class="shiurim-grid">
-
-        <!-- כדי להוסיף וידאו יוטיוב: החלף את ה-video-placeholder ב:
-             <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
-        -->
-
-        <div class="shiur-card">
-          <div class="video-container" onclick="openLightbox('M_lC8ArAIn4')">
-            <img src="https://img.youtube.com/vi/M_lC8ArAIn4/hqdefault.jpg"
-            style="position:absolute;top:0;right:0;width:100%;height:100%;object-fit:cover;" alt="תמונה מקדימה" />
-          </div>
-          <div class="shiur-info">
-            <h3>שיעור גמרא – מסכת ברכות</h3>
-            <div class="meta">📅 ח' סיון תשפ"ה &nbsp;|&nbsp; 👤 הרב יוסף אלון שליט"א</div>
-            <p>ברכות דף כ"ה עמוד ב' דף כ"ו עמוד א'</p>
-          </div>
-        </div>
-
-        <div class="shiur-card">
-          <div class="video-container" onclick="openLightbox('2Vy3Otnz2Jk')">
-            <img src="https://img.youtube.com/vi/2Vy3Otnz2Jk/hqdefault.jpg"
-            style="position:absolute;top:0;right:0;width:100%;height:100%;object-fit:cover;" alt="תמונה מקדימה" />
-          </div>
-          <div class="shiur-info">
-            <h3>שיעור גמרא – מסכת ברכות</h3>
-            <div class="meta">📅 ט"ו סיון תשפ"ה &nbsp;|&nbsp; 👤 הרב יוסף אלון שליט"א</div>
-            <p>ברכות דף כ"ו עמוד א'</p>
-          </div>
-        </div>
-
-        <div class="shiur-card">
-          <div class="video-container">
-            <div class="video-placeholder">
-              <span class="play-icon">▶</span>
-              <span>וידאו יוטיוב – יש להוסיף</span>
-            </div>
-          </div>
-          <div class="shiur-info">
-            <h3>אמונה בעת קשיים</h3>
-            <div class="meta">📅 ג' כסלו תשפ"ה &nbsp;|&nbsp; 👤 הרב דוד שפירא</div>
-            <p>כיצד מתמודדים עם מסות ואתגרים מתוך אמונה שלמה בה'</p>
-          </div>
-        </div>
-
-        <div class="shiur-card">
-          <div class="video-container">
-            <div class="video-placeholder">
-              <span class="play-icon">▶</span>
-              <span>וידאו יוטיוב – יש להוסיף</span>
-            </div>
-          </div>
-          <div class="shiur-info">
-            <h3>חנוכה – אור מתוך חשכה</h3>
-            <div class="meta">📅 כ"ה כסלו תשפ"ה &nbsp;|&nbsp; 👤 הרבנית רחל גולדברג</div>
-            <p>שיעור לחנוכה על עניין הנס ומשמעותו לדורנו</p>
-          </div>
-        </div>
-
-        <div class="shiur-card">
-          <div class="video-container">
-            <div class="video-placeholder">
-              <span class="play-icon">▶</span>
-              <span>וידאו יוטיוב – יש להוסיף</span>
-            </div>
-          </div>
-          <div class="shiur-info">
-            <h3>תפילה – שיח לב</h3>
-            <div class="meta">📅 ה' טבת תשפ"ה &nbsp;|&nbsp; 👤 הרב אברהם צוקרמן</div>
-            <p>על מהות התפילה וכיצד להתחבר אליה מתוך כוונה אמיתית</p>
-          </div>
-        </div>
-
-        <div class="shiur-card">
-          <div class="video-container">
-            <div class="video-placeholder">
-              <span class="play-icon">▶</span>
-              <span>וידאו יוטיוב – יש להוסיף</span>
-            </div>
-          </div>
-          <div class="shiur-info">
-            <h3>מידות טובות ביומיום</h3>
-            <div class="meta">📅 י"ח טבת תשפ"ה &nbsp;|&nbsp; 👤 הרבנית שרה פרידמן</div>
-            <p>כיצד מכניסים מידות טובות לשגרת החיים המודרנית</p>
-          </div>
-        </div>
-
-      </div>
-
+      <div class="shiurim-grid" id="shiurimGrid"></div>
     </div>
   </section>
 
+  <!-- ── הצג עוד ── -->
+  <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
+    <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">הצג עוד שיעורים ▾</button>
+  </div>
+
+  <!-- ── FOOTER ── -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-logo"><span class="logo-icon">🪔</span> לומדי תורתך לשמה</div>
@@ -154,9 +103,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js"></script>
-
-  <!-- Lightbox וידאו -->
+  <!-- ── Lightbox ── -->
   <div class="video-lightbox" id="videoLightbox">
     <div class="lightbox-inner">
       <button class="lightbox-close" onclick="closeLightbox()">✕</button>
@@ -164,19 +111,229 @@
     </div>
   </div>
 
+  <script src="../js/main.js"></script>
+
   <script>
-    function openLightbox(videoId) {
-      document.getElementById('lightboxFrame').src = 
-        'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
-      document.getElementById('videoLightbox').classList.add('open');
-    }
-    function closeLightbox() {
-      document.getElementById('lightboxFrame').src = '';
-      document.getElementById('videoLightbox').classList.remove('open');
-    }
-    document.getElementById('videoLightbox').addEventListener('click', function(e) {
-      if (e.target === this) closeLightbox();
+  // ════════════════════════════════════════════════════════
+  //  מאגר השיעורים
+  //  כדי להוסיף שיעור חדש – הוסיפי אובייקט למערך הזה בלבד.
+  //  שדות חובה: title, lecturer, dateHeb, date, description
+  //  videoId: מזהה יוטיוב (אם אין – השאירי null)
+  // ════════════════════════════════════════════════════════
+  const ALL_SHIURIM = [
+    {
+      title:       'שיעור גמרא – מסכת ברכות',
+      lecturer:    'הרב יוסף אלון שליט"א',
+      dateHeb:     'ט"ו סיון תשפ"ה',
+      date:        new Date(2025, 5, 15),
+      description: 'ברכות דף כ"ו עמוד א\'',
+      videoId:     '2Vy3Otnz2Jk',
+    },
+    {
+      title:       'שיעור גמרא – מסכת ברכות',
+      lecturer:    'הרב יוסף אלון שליט"א',
+      dateHeb:     'ח\' סיון תשפ"ה',
+      date:        new Date(2025, 5, 8),
+      description: 'ברכות דף כ"ה עמוד ב\' דף כ"ו עמוד א\'',
+      videoId:     'M_lC8ArAIn4',
+    },
+    {
+      title:       'מידות טובות ביומיום',
+      lecturer:    'הרבנית שרה פרידמן',
+      dateHeb:     'י"ח טבת תשפ"ה',
+      date:        new Date(2025, 0, 18),
+      description: 'כיצד מכניסים מידות טובות לשגרת החיים המודרנית',
+      videoId:     null,
+    },
+    {
+      title:       'תפילה – שיח לב',
+      lecturer:    'הרב אברהם צוקרמן',
+      dateHeb:     'ה\' טבת תשפ"ה',
+      date:        new Date(2025, 0, 5),
+      description: 'על מהות התפילה וכיצד להתחבר אליה מתוך כוונה אמיתית',
+      videoId:     null,
+    },
+    {
+      title:       'חנוכה – אור מתוך חשכה',
+      lecturer:    'הרבנית רחל גולדברג',
+      dateHeb:     'כ"ה כסלו תשפ"ה',
+      date:        new Date(2024, 11, 25),
+      description: 'שיעור לחנוכה על עניין הנס ומשמעותו לדורנו',
+      videoId:     null,
+    },
+    {
+      title:       'אמונה בעת קשיים',
+      lecturer:    'הרב דוד שפירא',
+      dateHeb:     'ג\' כסלו תשפ"ה',
+      date:        new Date(2024, 10, 25),
+      description: 'כיצד מתמודדים עם מסות ואתגרים מתוך אמונה שלמה בה\'',
+      videoId:     null,
+    },
+  ];
+
+  // ════════════════════════════════════════
+  //  הגדרות
+  // ════════════════════════════════════════
+  const PAGE_SIZE = 12;
+  let currentSort   = 'newest';
+  let filteredList  = [];
+  let displayedCount = 0;
+
+  // ════════════════════════════════════════
+  //  אתחול
+  // ════════════════════════════════════════
+  function init() {
+    buildLecturerFilter();
+    applyFilters();
+  }
+
+  function buildLecturerFilter() {
+    const sel = document.getElementById('lecturerFilter');
+    const names = [...new Set(ALL_SHIURIM.map(s => s.lecturer))].sort((a,b) => a.localeCompare(b,'he'));
+    names.forEach(name => {
+      const opt = document.createElement('option');
+      opt.value = name;
+      opt.textContent = name;
+      sel.appendChild(opt);
     });
+  }
+
+  // ════════════════════════════════════════
+  //  מיון
+  // ════════════════════════════════════════
+  function setSort(btn, type) {
+    currentSort = type;
+    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+  }
+
+  function sortList(arr) {
+    const copy = [...arr];
+    if (currentSort === 'newest') copy.sort((a,b) => b.date - a.date);
+    else if (currentSort === 'oldest') copy.sort((a,b) => a.date - b.date);
+    else if (currentSort === 'title')  copy.sort((a,b) => a.title.localeCompare(b.title,'he'));
+    return copy;
+  }
+
+  // ════════════════════════════════════════
+  //  סינון
+  // ════════════════════════════════════════
+  function applyFilters() {
+    const lecturer = document.getElementById('lecturerFilter').value;
+    const query    = document.getElementById('searchInput').value.trim().toLowerCase();
+
+    filteredList = ALL_SHIURIM.filter(s => {
+      if (lecturer && s.lecturer !== lecturer) return false;
+      if (query) {
+        const hay = (s.title + s.lecturer + s.description + s.dateHeb).toLowerCase();
+        if (!hay.includes(query)) return false;
+      }
+      return true;
+    });
+
+    filteredList   = sortList(filteredList);
+    displayedCount = 0;
+    renderGrid(true);
+  }
+
+  // ════════════════════════════════════════
+  //  רינדור
+  // ════════════════════════════════════════
+  function renderGrid(reset) {
+    const grid = document.getElementById('shiurimGrid');
+    if (reset) grid.innerHTML = '';
+
+    if (filteredList.length === 0) {
+      grid.innerHTML = `
+        <div class="empty-state">
+          <div class="icon">📭</div>
+          <p>לא נמצאו שיעורים תואמים לחיפוש</p>
+        </div>`;
+      document.getElementById('loadMoreWrap').style.display = 'none';
+      document.getElementById('resultsCount').textContent   = '';
+      return;
+    }
+
+    const nextCount = Math.min(displayedCount + PAGE_SIZE, filteredList.length);
+    const slice     = filteredList.slice(displayedCount, nextCount);
+
+    slice.forEach((s, i) => {
+      const card = document.createElement('div');
+      card.className = 'shiur-card';
+      card.style.animationDelay = (i * 0.055) + 's';
+
+      const videoHtml = s.videoId
+        ? `<div class="video-container" onclick="openLightbox('${s.videoId}')" title="לחץ לצפייה">
+             <img src="https://img.youtube.com/vi/${s.videoId}/hqdefault.jpg"
+                  style="position:absolute;top:0;right:0;width:100%;height:100%;object-fit:cover;"
+                  alt="תמונה מקדימה" />
+             <div class="play-overlay">▶</div>
+           </div>`
+        : `<div class="video-container">
+             <div class="video-placeholder">
+               <span class="play-icon">▶</span>
+               <span>וידאו יוטיוב – יש להוסיף</span>
+             </div>
+           </div>`;
+
+      card.innerHTML = `
+        ${videoHtml}
+        <div class="shiur-info">
+          <h3>${s.title}</h3>
+          <div class="meta-tags">
+            <span class="meta-tag">📅 ${s.dateHeb}</span>
+            <span class="meta-tag lecturer">👤 ${s.lecturer}</span>
+          </div>
+          <p>${s.description}</p>
+        </div>`;
+
+      grid.appendChild(card);
+    });
+
+    displayedCount = nextCount;
+
+    // כפתור "הצג עוד"
+    const remaining = filteredList.length - displayedCount;
+    const wrap = document.getElementById('loadMoreWrap');
+    const btn  = document.getElementById('loadMoreBtn');
+
+    if (remaining > 0) {
+      wrap.style.display = 'flex';
+      btn.textContent    = `הצג עוד ${remaining} שיעורים ▾`;
+    } else {
+      wrap.style.display = 'none';
+    }
+
+    // מונה
+    document.getElementById('resultsCount').textContent =
+      `מציג ${displayedCount} מתוך ${filteredList.length} שיעורים`;
+  }
+
+  function loadMore() {
+    renderGrid(false);
+    // גלילה קלה למטה
+    window.scrollBy({ top: 200, behavior: 'smooth' });
+  }
+
+  // ════════════════════════════════════════
+  //  Lightbox
+  // ════════════════════════════════════════
+  function openLightbox(videoId) {
+    document.getElementById('lightboxFrame').src =
+      'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+    document.getElementById('videoLightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightboxFrame').src = '';
+    document.getElementById('videoLightbox').classList.remove('open');
+  }
+  document.getElementById('videoLightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+
+  // ── התחלה ──
+  init();
   </script>
 </body>
 </html>
