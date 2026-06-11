@@ -13,7 +13,7 @@
     <nav class="navbar">
       <div class="logo">
         <div class="logo-placeholder"><span class="logo-icon">
-                      <img src="../images/logo.png" alt="לומדי תורתך לשמה" class="logo-img" />
+          <img src="../images/logo.png" alt="לומדי תורתך לשמה" class="logo-img" />
         </span></div>
         <span class="logo-text">לומדי תורתך לשמה</span>
       </div>
@@ -25,23 +25,23 @@
         <li><a href="gallery.html">גלריה</a></li>
         <li><a href="donations.html">תרומות</a></li>
         <li><a href="contact.html">צור קשר</a></li>
-</ul>
+      </ul>
       <button class="hamburger" onclick="toggleMenu()">☰</button>
     </nav>
     <div class="mobile-menu" id="mobileMenu">
       <a href="../index.html">בית</a>
-      <a href="about.html" class="active">אודות</a>
+      <a href="about.html">אודות</a>
       <a href="kollel.html">הכולל</a>
       <a href="shiurim.html">שיעורי תורה</a>
       <a href="gallery.html">גלריה</a>
       <a href="donations.html">תרומות</a>
       <a href="contact.html">צור קשר</a>
-</div>
+    </div>
   </header>
 
   <div class="page-hero">
-    <h1>אודות העמותה</h1>
-    <p>הכירו את לומדי תורתך לשמה – הסיפור שלנו, הערכים שלנו, המשימה שלנו</p>
+    <h1 data-cms="about_title">אודות העמותה</h1>
+    <p data-cms="about_subtitle">הכירו את לומדי תורתך לשמה – הסיפור שלנו, הערכים שלנו, המשימה שלנו</p>
   </div>
 
   <section class="about-section">
@@ -51,56 +51,46 @@
           <img src="../images/logo.png" alt="לומדי תורתך לשמה" />
         </div>
         <div class="about-text">
-          <h2>מי אנחנו?</h2>
-          <p>
-            עמותת "לומדי תורתך לשמה" הוקמה מתוך אהבת תורה ורצון עמוק להנגיש את לימוד התורה לכל שכבות האוכלוסייה.
-            אנו מאמינים כי כל יהודי ויהודייה ראויים לקבל חינוך תורני איכותי, בין אם בבית הכנסת,
-            בבית הספר, ובין אם מהספה שבבית.
-          </p>
-          <p>
-            הפעילות שלנו מגוונת וכוללת שיעורי תורה שבועיים, ימי עיון, הרצאות מיוחדות לרגל חגי ישראל,
-            תוכניות לנוער ולמשפחות – כולם נגישים ופתוחים לציבור הרחב.
-          </p>
-          <p>
-            אנו שמחים לקבל כל אחד ואחת לקהילה שלנו ומזמינים אתכם לקחת חלק פעיל בהפצת אור התורה.
-          </p>
+          <h2 data-cms="about_who_title">מי אנחנו?</h2>
+          <p data-cms="about_p1">עמותת "לומדי תורתך לשמה" הוקמה מתוך אהבת תורה ורצון עמוק להנגיש את לימוד התורה לכל שכבות האוכלוסייה. אנו מאמינים כי כל יהודי ויהודייה ראויים לקבל חינוך תורני איכותי, בין אם בבית הכנסת, בבית הספר, ובין אם מהספה שבבית.</p>
+          <p data-cms="about_p2">הפעילות שלנו מגוונת וכוללת שיעורי תורה שבועיים, ימי עיון, הרצאות מיוחדות לרגל חגי ישראל, תוכניות לנוער ולמשפחות – כולם נגישים ופתוחים לציבור הרחב.</p>
+          <p data-cms="about_p3">אנו שמחים לקבל כל אחד ואחת לקהילה שלנו ומזמינים אתכם לקחת חלק פעיל בהפצת אור התורה.</p>
         </div>
       </div>
 
-      <div class="values-grid" style="margin-top: 80px;">
-        <div style="text-align:center; grid-column: 1/-1; margin-bottom: 16px;">
+      <div class="values-grid" style="margin-top:80px;">
+        <div style="text-align:center; grid-column:1/-1; margin-bottom:16px;">
           <div class="section-title">
             <span class="ornament">❧</span>
-            <h2>הערכים שלנו</h2>
+            <h2 data-cms="about_values_title">הערכים שלנו</h2>
             <span class="ornament">❧</span>
           </div>
         </div>
         <div class="value-item">
           <div class="icon">📖</div>
-          <h3>לימוד תורה</h3>
+          <h3 data-cms="about_val1">לימוד תורה</h3>
         </div>
         <div class="value-item">
           <div class="icon">🤝</div>
-          <h3>קהילה ואחדות</h3>
+          <h3 data-cms="about_val2">קהילה ואחדות</h3>
         </div>
         <div class="value-item">
           <div class="icon">🌟</div>
-          <h3>נגישות לכולם</h3>
+          <h3 data-cms="about_val3">נגישות לכולם</h3>
         </div>
         <div class="value-item">
           <div class="icon">❤️</div>
-          <h3>אהבת ישראל</h3>
+          <h3 data-cms="about_val4">אהבת ישראל</h3>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- QUOTE -->
   <section class="quote-banner">
     <div class="container">
       <blockquote>
-        "ואהבת לרעך כמוך"
-        <cite>– ויקרא יט, יח</cite>
+        <span data-cms="about_quote">"ואהבת לרעך כמוך"</span>
+        <cite data-cms="about_quote_cite">– ויקרא יט, יח</cite>
       </blockquote>
     </div>
   </section>
@@ -111,17 +101,18 @@
       <p class="footer-tagline">מפיצים אור תורה לכל בית ישראל</p>
       <div class="footer-links">
         <a href="../index.html">בית</a>
-        <a href="about.html" class="active">אודות</a>
+        <a href="about.html">אודות</a>
         <a href="kollel.html">הכולל</a>
         <a href="shiurim.html">שיעורי תורה</a>
         <a href="gallery.html">גלריה</a>
         <a href="donations.html">תרומות</a>
         <a href="contact.html">צור קשר</a>
-</div>
+      </div>
       <p class="footer-copy">© כל הזכויות שמורות לתהילה אלון | <a href="mailto:tehila54345@gmail.com">tehila54345@gmail.com</a></p>
     </div>
   </footer>
 
   <script src="../js/main.js"></script>
+  <script src="../js/cms.js"></script>
 </body>
 </html>

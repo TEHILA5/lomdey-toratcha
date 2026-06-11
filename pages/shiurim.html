@@ -6,265 +6,15 @@
   <title>שיעורי תורה – לומדי תורתך לשמה</title>
   <link rel="stylesheet" href="../css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ── סרגל בקרה ── */
-    .controls-bar {
-      background: #fff;
-      border-bottom: 1px solid rgba(201,168,76,0.2);
-      padding: 16px 0;
-      position: sticky;
-      top: 70px;
-      z-index: 50;
-      box-shadow: 0 2px 12px rgba(58,42,16,0.07);
-    }
-    .controls-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .controls-right {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-    .controls-label {
-      font-size: 13px;
-      color: var(--text-light);
-      font-weight: 600;
-    }
-
-    /* כפתורי מיון */
-    .sort-btn-group {
-      display: flex;
-      gap: 4px;
-      background: var(--cream);
-      border: 1px solid rgba(201,168,76,0.25);
-      border-radius: 8px;
-      padding: 3px;
-    }
-    .sort-btn {
-      border: none;
-      background: transparent;
-      padding: 7px 14px;
-      border-radius: 6px;
-      font-size: 13px;
-      font-family: 'Heebo', sans-serif;
-      cursor: pointer;
-      color: var(--text-light);
-      font-weight: 500;
-      transition: all 0.18s;
-      white-space: nowrap;
-    }
-    .sort-btn.active {
-      background: var(--gold);
-      color: var(--brown);
-      font-weight: 700;
-      box-shadow: 0 1px 6px rgba(201,168,76,0.3);
-    }
-    .sort-btn:not(.active):hover {
-      background: rgba(201,168,76,0.12);
-      color: var(--brown);
-    }
-
-    /* סלקטור מרצה */
-    .filter-select {
-      border: 1px solid rgba(201,168,76,0.3);
-      background: var(--cream);
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-family: 'Heebo', sans-serif;
-      color: var(--text);
-      cursor: pointer;
-      outline: none;
-      transition: border 0.18s;
-      min-width: 160px;
-      direction: rtl;
-    }
-    .filter-select:focus { border-color: var(--gold); }
-
-    /* חיפוש */
-    .search-input {
-      border: 1px solid rgba(201,168,76,0.3);
-      background: var(--cream);
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-family: 'Heebo', sans-serif;
-      color: var(--text);
-      outline: none;
-      transition: border 0.18s;
-      min-width: 190px;
-      direction: rtl;
-    }
-    .search-input:focus { border-color: var(--gold); }
-    .search-input::placeholder { color: var(--text-light); }
-
-    /* מונה תוצאות */
-    .results-count {
-      font-size: 13px;
-      color: var(--text-light);
-      font-weight: 500;
-      white-space: nowrap;
-    }
-
-    /* כרטיסי שיעור */
-    .shiur-card { animation: fadeInCard 0.3s ease both; }
-    @keyframes fadeInCard {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* תגיות מטה */
-    .meta-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 10px;
-    }
-    .meta-tag {
-      background: var(--cream);
-      border: 1px solid rgba(201,168,76,0.22);
-      border-radius: 20px;
-      padding: 2px 10px;
-      font-size: 11px;
-      color: var(--text-light);
-      white-space: nowrap;
-    }
-    .meta-tag.lecturer {
-      border-color: rgba(201,168,76,0.5);
-      color: var(--gold-dark);
-      background: #fdf9ec;
-    }
-
-    /* אייקון play על תמונה */
-    .play-overlay {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: 54px; height: 54px;
-      background: rgba(201,168,76,0.88);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--brown);
-      font-size: 20px;
-      pointer-events: none;
-      transition: transform 0.2s, background 0.2s;
-      box-shadow: 0 2px 14px rgba(0,0,0,0.3);
-    }
-    .shiur-card:hover .play-overlay {
-      transform: translate(-50%,-50%) scale(1.1);
-      background: var(--gold);
-    }
-
-    /* מצב טעינה */
-    .loading-state {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--text-light);
-      grid-column: 1/-1;
-    }
-    .loading-spinner {
-      width: 44px; height: 44px;
-      border: 3px solid rgba(201,168,76,0.2);
-      border-top-color: var(--gold);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin: 0 auto 16px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* מצב שגיאה */
-    .error-state {
-      text-align: center;
-      padding: 60px 20px;
-      color: #c0392b;
-      grid-column: 1/-1;
-    }
-    .error-state .icon { font-size: 40px; margin-bottom: 12px; }
-    .retry-btn {
-      margin-top: 14px;
-      background: var(--brown);
-      color: var(--gold-light);
-      border: none;
-      padding: 10px 28px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-family: 'Heebo', sans-serif;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    /* מצב ריק */
-    .empty-state {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--text-light);
-      grid-column: 1/-1;
-    }
-    .empty-state .icon { font-size: 48px; margin-bottom: 14px; }
-    .empty-state p { font-size: 17px; }
-
-    /* כפתור "הצג עוד" */
-    .load-more-wrap {
-      display: flex;
-      justify-content: center;
-      padding: 16px 0 48px;
-    }
-    .load-more-btn {
-      background: var(--brown);
-      color: var(--gold-light);
-      border: none;
-      padding: 14px 44px;
-      border-radius: 50px;
-      font-size: 15px;
-      font-family: 'Heebo', sans-serif;
-      font-weight: 700;
-      cursor: pointer;
-      letter-spacing: 0.03em;
-      transition: background 0.2s, transform 0.15s;
-      box-shadow: 0 3px 16px rgba(58,42,16,0.2);
-    }
-    .load-more-btn:hover {
-      background: var(--gold);
-      color: var(--brown);
-      transform: translateY(-2px);
-    }
-
-    /* תג "עודכן לאחרונה" */
-    .last-updated {
-      font-size: 11px;
-      color: var(--text-light);
-      text-align: left;
-      padding: 6px 24px 0;
-      max-width: 1100px;
-      margin: 0 auto;
-      opacity: 0.7;
-    }
-
-    @media (max-width: 600px) {
-      .controls-right { flex-direction: column; align-items: flex-start; }
-      .search-input, .filter-select { min-width: 0; width: 100%; }
-    }
-  </style>
 </head>
 <body>
 
-  <!-- ── HEADER ── -->
   <header class="site-header">
     <nav class="navbar">
       <div class="logo">
-        <div class="logo-placeholder">
-          <span class="logo-icon">
-            <img src="../images/logo.png" alt="לומדי תורתך לשמה" class="logo-img" />
-          </span>
-        </div>
+        <div class="logo-placeholder"><span class="logo-icon">
+          <img src="../images/logo.png" alt="לומדי תורתך לשמה" class="logo-img" />
+        </span></div>
         <span class="logo-text">לומדי תורתך לשמה</span>
       </div>
       <ul class="nav-links">
@@ -275,63 +25,53 @@
         <li><a href="gallery.html">גלריה</a></li>
         <li><a href="donations.html">תרומות</a></li>
         <li><a href="contact.html">צור קשר</a></li>
-</ul>
+      </ul>
       <button class="hamburger" onclick="toggleMenu()">☰</button>
     </nav>
     <div class="mobile-menu" id="mobileMenu">
       <a href="../index.html">בית</a>
       <a href="about.html">אודות</a>
       <a href="kollel.html">הכולל</a>
-      <a href="shiurim.html" class="active">שיעורי תורה</a>
+      <a href="shiurim.html">שיעורי תורה</a>
       <a href="gallery.html">גלריה</a>
       <a href="donations.html">תרומות</a>
       <a href="contact.html">צור קשר</a>
-</div>
+    </div>
   </header>
 
-  <!-- ── PAGE HERO ── -->
   <div class="page-hero">
     <h1>שיעורי תורה</h1>
-    <p>הרצאות ושיעורים מפי מרצים מובילים – לצפייה חינם בכל עת</p>
+    <p>שיעורים ודרשות מפי גדולי תורה – לצפייה חינם בכל עת</p>
   </div>
 
-  <!-- ── סרגל מיון / סינון ── -->
+  <!-- סרגל מיון -->
   <div class="controls-bar">
     <div class="controls-inner">
       <div class="controls-right">
-
         <span class="controls-label">מיון:</span>
         <div class="sort-btn-group">
-          <button class="sort-btn active" data-sort="newest" onclick="setSort(this,'newest')">חדש לישן</button>
-          <button class="sort-btn"        data-sort="oldest" onclick="setSort(this,'oldest')">ישן לחדש</button>
-          <button class="sort-btn"        data-sort="title"  onclick="setSort(this,'title')">לפי שם</button>
+          <button class="sort-btn active" onclick="setSort(this,'newest')">חדש לישן</button>
+          <button class="sort-btn" onclick="setSort(this,'oldest')">ישן לחדש</button>
+          <button class="sort-btn" onclick="setSort(this,'title')">לפי שם</button>
         </div>
-
         <span class="controls-label">מרצה:</span>
         <select class="filter-select" id="lecturerFilter" onchange="applyFilters()">
           <option value="">כל המרצים</option>
         </select>
-
-        <input class="search-input" id="searchInput" type="text"
-               placeholder="🔍 חיפוש חופשי..." oninput="applyFilters()" />
+        <input class="search-input" id="searchInput" type="text" placeholder="🔍 חיפוש..." oninput="applyFilters()" />
       </div>
-
       <span class="results-count" id="resultsCount"></span>
     </div>
-    <div class="last-updated" id="lastUpdated"></div>
   </div>
 
-  <!-- ── SHIURIM GRID ── -->
   <section class="shiurim-section">
     <div class="container">
-      <div class="section-title" style="margin-bottom: 36px;">
+      <div class="section-title" style="margin-bottom:32px;">
         <span class="ornament">❧</span>
         <h2>שיעורים אחרונים</h2>
         <span class="ornament">❧</span>
       </div>
-
       <div class="shiurim-grid" id="shiurimGrid">
-        <!-- מצב טעינה ראשוני -->
         <div class="loading-state">
           <div class="loading-spinner"></div>
           <p>טוען שיעורים...</p>
@@ -340,12 +80,18 @@
     </div>
   </section>
 
-  <!-- ── הצג עוד ── -->
   <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
     <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">הצג עוד שיעורים ▾</button>
   </div>
 
-  <!-- ── FOOTER ── -->
+  <!-- Lightbox -->
+  <div class="video-lightbox" id="videoLightbox">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <iframe id="lightboxFrame" src="" allowfullscreen></iframe>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="container">
       <div class="footer-logo"><span class="logo-icon">🪔</span> לומדי תורתך לשמה</div>
@@ -354,229 +100,126 @@
         <a href="../index.html">בית</a>
         <a href="about.html">אודות</a>
         <a href="kollel.html">הכולל</a>
-        <a href="shiurim.html" class="active">שיעורי תורה</a>
+        <a href="shiurim.html">שיעורי תורה</a>
         <a href="gallery.html">גלריה</a>
         <a href="donations.html">תרומות</a>
         <a href="contact.html">צור קשר</a>
-</div>
+      </div>
       <p class="footer-copy">© כל הזכויות שמורות לתהילה אלון | <a href="mailto:tehila54345@gmail.com">tehila54345@gmail.com</a></p>
     </div>
   </footer>
 
-  <!-- ── Lightbox ── -->
-  <div class="video-lightbox" id="videoLightbox">
-    <div class="lightbox-inner">
-      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-      <iframe id="lightboxFrame" src="" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <script src="../js/main.js"></script>
-
+  <script src="../js/cms.js"></script>
   <script>
-  // ════════════════════════════════════════════════════════
-  //  קישור ל-Google Sheets (CSV)
-  //  אם תרצי להחליף גיליון – שני רק את השורה הזו
-  // ════════════════════════════════════════════════════════
-  const SHEETS_CSV_URL =
-    'https://docs.google.com/spreadsheets/d/e/' +
-    '2PACX-1vSq6ayNrRh04Wk81o4qi-7zsZ_Akqce3SrFuOp9zZoNCUUZXEgLmMtKJpd2f7xxwpCIZPeTCQ9Hkyov' +
-    '/pub?gid=0&single=true&output=csv';
-  // ════════════════════════════════════════
-  //  הגדרות
-  // ════════════════════════════════════════
+  // ── שיעורי תורה – נטען מה-CMS ──────────────────────────────
   const PAGE_SIZE = 12;
-  let ALL_SHIURIM   = [];
-  let currentSort   = 'newest';
-  let filteredList  = [];
-  let displayedCount = 0;
+  let ALL_SHIURIM = [], currentSort = 'newest', filteredList = [], displayedCount = 0;
 
-  // ════════════════════════════════════════
-  //  פרסור CSV
-  // ════════════════════════════════════════
+  function parseCSVLine(line) {
+    const result = []; let cur = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (ch === '"') { if (inQ && line[i+1]==='"'){cur+='"';i++;} else inQ=!inQ; }
+      else if (ch===',' && !inQ) { result.push(cur); cur=''; }
+      else cur += ch;
+    }
+    result.push(cur); return result;
+  }
+
   function parseCSV(text) {
     const lines = text.trim().split('\n');
     if (lines.length < 2) return [];
-
-    // שורה ראשונה = כותרות (מתעלמים, מניחים סדר קבוע)
-    // title, lecturer, dateHeb, date, description, videoId
-    const rows = lines.slice(1);
-
-    return rows.map(line => {
-      // פרסור CSV בסיסי שמטפל בגרשיים
-      const cols = parseCSVLine(line);
-      const dateStr = (cols[3] || '').trim();
-      const parsedDate = dateStr ? new Date(dateStr) : new Date(0);
-
+    return lines.slice(1).map(line => {
+      const c = parseCSVLine(line);
+      const d = new Date((c[3]||'').trim());
       return {
-        title:       (cols[0] || '').trim(),
-        lecturer:    (cols[1] || '').trim(),
-        dateHeb:     (cols[2] || '').trim(),
-        date:        isNaN(parsedDate) ? new Date(0) : parsedDate,
-        description: (cols[4] || '').trim(),
-        videoId:     (cols[5] || '').trim() || null,
+        title:       (c[0]||'').trim(),
+        lecturer:    (c[1]||'').trim(),
+        dateHeb:     (c[2]||'').trim(),
+        date:        isNaN(d) ? new Date(0) : d,
+        description: (c[4]||'').trim(),
+        videoId:     (c[5]||'').trim() || null,
+        featured:    (c[6]||'').trim().toUpperCase() === 'TRUE',
       };
-    }).filter(s => s.title); // מסנן שורות ריקות
+    }).filter(s => s.title);
   }
 
-  // פרסר CSV שמטפל בשדות עם פסיקים בפנים (עטופים בגרשיים)
-  function parseCSVLine(line) {
-    const result = [];
-    let cur = '';
-    let inQuotes = false;
-
-    for (let i = 0; i < line.length; i++) {
-      const ch = line[i];
-      if (ch === '"') {
-        if (inQuotes && line[i+1] === '"') { cur += '"'; i++; }
-        else inQuotes = !inQuotes;
-      } else if (ch === ',' && !inQuotes) {
-        result.push(cur);
-        cur = '';
-      } else {
-        cur += ch;
-      }
-    }
-    result.push(cur);
-    return result;
-  }
-
-  // ════════════════════════════════════════
-  //  שליפה מהגיליון
-  // ════════════════════════════════════════
   async function fetchShiurim() {
-    const grid = document.getElementById('shiurimGrid');
-
+    // ממתין ל-cms.js לטעון את ה-URL
+    await new Promise(r => setTimeout(r, 50));
+    const url = window.CMS_SHIURIM_URL;
+    if (!url) { showError(); return; }
     try {
-      // cache-busting קל כדי לקבל תוכן עדכני
-      const url = SHEETS_CSV_URL + '&t=' + Date.now();
-      const res = await fetch(url);
-      if (!res.ok) throw new Error('שגיאת רשת ' + res.status);
-
-      const text = await res.text();
-      ALL_SHIURIM = parseCSV(text);
-
-      // עדכון שעת טעינה
-      const now = new Date();
-      document.getElementById('lastUpdated').textContent =
-        'עודכן: ' + now.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' });
-
+      const res = await fetch(url + '&t=' + Date.now());
+      if (!res.ok) throw new Error();
+      ALL_SHIURIM = parseCSV(await res.text());
       buildLecturerFilter();
       applyFilters();
-
-    } catch (err) {
-      console.error('שגיאה בטעינת שיעורים:', err);
-      grid.innerHTML = `
-        <div class="error-state">
-          <div class="icon">⚠️</div>
-          <p>לא ניתן לטעון את השיעורים כרגע</p>
-          <p style="font-size:13px;color:#888;margin-top:6px;">${err.message}</p>
-          <button class="retry-btn" onclick="fetchShiurim()">נסה שוב</button>
-        </div>`;
-    }
+    } catch { showError(); }
   }
 
-  // ════════════════════════════════════════
-  //  אתחול רשימת מרצים
-  // ════════════════════════════════════════
+  function showError() {
+    document.getElementById('shiurimGrid').innerHTML = `
+      <div class="error-state">
+        <p>⚠️ לא ניתן לטעון שיעורים כרגע</p>
+        <button class="retry-btn" onclick="fetchShiurim()">נסה שוב</button>
+      </div>`;
+  }
+
   function buildLecturerFilter() {
     const sel = document.getElementById('lecturerFilter');
-    // שמירת הבחירה הנוכחית
-    const current = sel.value;
-    sel.innerHTML = '<option value="">כל המרצים</option>';
-
-    const names = [...new Set(ALL_SHIURIM.map(s => s.lecturer).filter(Boolean))]
-                    .sort((a,b) => a.localeCompare(b,'he'));
-    names.forEach(name => {
-      const opt = document.createElement('option');
-      opt.value = name;
-      opt.textContent = name;
-      if (name === current) opt.selected = true;
-      sel.appendChild(opt);
-    });
+    const names = [...new Set(ALL_SHIURIM.map(s=>s.lecturer).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'he'));
+    names.forEach(n => { const o = document.createElement('option'); o.value = o.textContent = n; sel.appendChild(o); });
   }
 
-  // ════════════════════════════════════════
-  //  מיון
-  // ════════════════════════════════════════
   function setSort(btn, type) {
     currentSort = type;
-    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     applyFilters();
   }
 
-  function sortList(arr) {
-    const copy = [...arr];
-    if (currentSort === 'newest') copy.sort((a,b) => b.date - a.date);
-    else if (currentSort === 'oldest') copy.sort((a,b) => a.date - b.date);
-    else if (currentSort === 'title')  copy.sort((a,b) => a.title.localeCompare(b.title,'he'));
-    return copy;
-  }
-
-  // ════════════════════════════════════════
-  //  סינון
-  // ════════════════════════════════════════
   function applyFilters() {
-    const lecturer = document.getElementById('lecturerFilter').value;
-    const query    = document.getElementById('searchInput').value.trim().toLowerCase();
-
+    const lec = document.getElementById('lecturerFilter').value;
+    const q   = document.getElementById('searchInput').value.trim().toLowerCase();
     filteredList = ALL_SHIURIM.filter(s => {
-      if (lecturer && s.lecturer !== lecturer) return false;
-      if (query) {
-        const hay = (s.title + s.lecturer + s.description + s.dateHeb).toLowerCase();
-        if (!hay.includes(query)) return false;
-      }
+      if (lec && s.lecturer !== lec) return false;
+      if (q && !(s.title+s.lecturer+s.description+s.dateHeb).toLowerCase().includes(q)) return false;
       return true;
     });
-
-    filteredList   = sortList(filteredList);
+    const copy = [...filteredList];
+    if (currentSort==='newest') copy.sort((a,b)=>b.date-a.date);
+    else if (currentSort==='oldest') copy.sort((a,b)=>a.date-b.date);
+    else copy.sort((a,b)=>a.title.localeCompare(b.title,'he'));
+    filteredList = copy;
     displayedCount = 0;
     renderGrid(true);
   }
 
-  // ════════════════════════════════════════
-  //  רינדור
-  // ════════════════════════════════════════
   function renderGrid(reset) {
     const grid = document.getElementById('shiurimGrid');
     if (reset) grid.innerHTML = '';
-
-    if (filteredList.length === 0) {
-      grid.innerHTML = `
-        <div class="empty-state">
-          <div class="icon">📭</div>
-          <p>לא נמצאו שיעורים תואמים לחיפוש</p>
-        </div>`;
+    if (!filteredList.length) {
+      grid.innerHTML = '<div class="empty-state"><p>📭 לא נמצאו שיעורים</p></div>';
       document.getElementById('loadMoreWrap').style.display = 'none';
-      document.getElementById('resultsCount').textContent   = '';
+      document.getElementById('resultsCount').textContent = '';
       return;
     }
-
-    const nextCount = Math.min(displayedCount + PAGE_SIZE, filteredList.length);
-    const slice     = filteredList.slice(displayedCount, nextCount);
-
-    slice.forEach((s, i) => {
+    const next = Math.min(displayedCount + PAGE_SIZE, filteredList.length);
+    filteredList.slice(displayedCount, next).forEach((s,i) => {
       const card = document.createElement('div');
-      card.className = 'shiur-card';
-      card.style.animationDelay = (i * 0.055) + 's';
-
-      const videoHtml = s.videoId
-        ? `<div class="video-container" onclick="openLightbox('${s.videoId}')" title="לחץ לצפייה" style="cursor:pointer;">
+      card.className = 'shiur-card' + (s.featured ? ' featured' : '');
+      card.style.animationDelay = (i*0.05)+'s';
+      const vid = s.videoId
+        ? `<div class="video-container" onclick="openLightbox('${s.videoId}')" style="cursor:pointer;">
              <img src="https://img.youtube.com/vi/${s.videoId}/hqdefault.jpg"
-                  style="position:absolute;top:0;right:0;width:100%;height:100%;object-fit:cover;"
-                  alt="תמונה מקדימה" />
-             <div class="play-overlay">▶</div>
+                  style="position:absolute;top:0;right:0;width:100%;height:100%;object-fit:cover;" alt="" />
+             <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+                  width:52px;height:52px;background:rgba(201,168,76,0.9);border-radius:50%;
+                  display:flex;align-items:center;justify-content:center;font-size:20px;color:#0f1a30;">▶</div>
            </div>`
-        : `<div class="video-container">
-             <div class="video-placeholder">
-               <span class="play-icon">▶</span>
-               <span>וידאו בקרוב</span>
-             </div>
-           </div>`;
-
-      card.innerHTML = `
-        ${videoHtml}
+        : `<div class="video-container"><div class="video-placeholder"><span class="play-icon">▶</span><span>בקרוב</span></div></div>`;
+      card.innerHTML = `${vid}
         <div class="shiur-info">
           <h3>${s.title}</h3>
           <div class="meta-tags">
@@ -585,52 +228,31 @@
           </div>
           <p>${s.description}</p>
         </div>`;
-
       grid.appendChild(card);
     });
-
-    displayedCount = nextCount;
-
-    // כפתור "הצג עוד"
-    const remaining = filteredList.length - displayedCount;
+    displayedCount = next;
+    const rem = filteredList.length - displayedCount;
     const wrap = document.getElementById('loadMoreWrap');
-    const btn  = document.getElementById('loadMoreBtn');
-
-    if (remaining > 0) {
-      wrap.style.display = 'flex';
-      btn.textContent    = `הצג עוד ${remaining} שיעורים ▾`;
-    } else {
-      wrap.style.display = 'none';
-    }
-
-    // מונה
-    document.getElementById('resultsCount').textContent =
-      `מציג ${displayedCount} מתוך ${filteredList.length} שיעורים`;
+    wrap.style.display = rem > 0 ? 'flex' : 'none';
+    if (rem > 0) document.getElementById('loadMoreBtn').textContent = `הצג עוד ${rem} שיעורים ▾`;
+    document.getElementById('resultsCount').textContent = `מציג ${displayedCount} מתוך ${filteredList.length}`;
   }
 
-  function loadMore() {
-    renderGrid(false);
-    window.scrollBy({ top: 200, behavior: 'smooth' });
-  }
+  function loadMore() { renderGrid(false); window.scrollBy({top:200,behavior:'smooth'}); }
 
-  // ════════════════════════════════════════
-  //  Lightbox
-  // ════════════════════════════════════════
-  function openLightbox(videoId) {
-    document.getElementById('lightboxFrame').src =
-      'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+  function openLightbox(id) {
+    document.getElementById('lightboxFrame').src = 'https://www.youtube.com/embed/'+id+'?autoplay=1';
     document.getElementById('videoLightbox').classList.add('open');
   }
   function closeLightbox() {
     document.getElementById('lightboxFrame').src = '';
     document.getElementById('videoLightbox').classList.remove('open');
   }
-  document.getElementById('videoLightbox').addEventListener('click', function(e) {
-    if (e.target === this) closeLightbox();
-  });
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  document.getElementById('videoLightbox').addEventListener('click', function(e){ if(e.target===this) closeLightbox(); });
 
-  // ── התחלה ──
   fetchShiurim();
   </script>
+  <script src="../js/main.js"></script>
 </body>
 </html>

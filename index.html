@@ -9,7 +9,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <header class="site-header">
     <nav class="navbar">
       <div class="logo">
@@ -28,7 +27,7 @@
         <li><a href="pages/gallery.html">גלריה</a></li>
         <li><a href="pages/donations.html">תרומות</a></li>
         <li><a href="pages/contact.html">צור קשר</a></li>
-</ul>
+      </ul>
       <button class="hamburger" onclick="toggleMenu()">☰</button>
     </nav>
     <div class="mobile-menu" id="mobileMenu">
@@ -39,7 +38,7 @@
       <a href="pages/gallery.html">גלריה</a>
       <a href="pages/donations.html">תרומות</a>
       <a href="pages/contact.html">צור קשר</a>
-</div>
+    </div>
   </header>
 
   <!-- HERO -->
@@ -47,16 +46,16 @@
     <div class="hero-bg"></div>
     <div class="hero-content">
       <div class="hero-ornament">✦ ✦ ✦</div>
-      <h1 class="hero-title">לומדי תורתך לשמה</h1>
+      <h1 class="hero-title" data-cms="home_title">לומדי תורתך לשמה</h1>
       <div class="hero-logo-big">
         <img src="images/logo.png" alt="לומדי תורתך לשמה" />
       </div>
-      <p class="hero-subtitle">מפיצים אור תורה לכל בית ישראל</p>
+      <p class="hero-subtitle" data-cms="home_subtitle">מפיצים אור תורה לכל בית ישראל</p>
       <div class="hero-divider"></div>
-      <p class="hero-verse">"כִּי נֵר מִצְוָה וְתוֹרָה אוֹר"</p>
+      <p class="hero-verse" data-cms="home_verse">"כִּי נֵר מִצְוָה וְתוֹרָה אוֹר"</p>
       <div class="hero-buttons">
-        <a href="pages/shiurim.html" class="btn-primary">לשיעורי התורה</a>
-        <a href="pages/about.html" class="btn-secondary">קראו עלינו</a>
+        <a href="pages/shiurim.html" class="btn-primary" data-cms="home_btn1">לשיעורי התורה</a>
+        <a href="pages/about.html" class="btn-secondary" data-cms="home_btn2">קראו עלינו</a>
       </div>
     </div>
   </section>
@@ -66,26 +65,26 @@
     <div class="container">
       <div class="section-title">
         <span class="ornament">❧</span>
-        <h2>במה אנחנו עוסקים</h2>
+        <h2 data-cms="home_features_title">במה אנחנו עוסקים</h2>
         <span class="ornament">❧</span>
       </div>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">📖</div>
-          <h3>שיעורי תורה</h3>
-          <p>הרצאות ושיעורים מפי רבנים ומרצים מובילים, זמינים לצפייה בכל עת</p>
+          <h3 data-cms="home_card1_title">שיעורי תורה</h3>
+          <p data-cms="home_card1_text">הרצאות ושיעורים מפי רבנים ומרצים מובילים, זמינים לצפייה בכל עת</p>
           <a href="pages/shiurim.html" class="card-link">לצפייה ←</a>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🕍</div>
-          <h3>קהילה מחוברת</h3>
-          <p>מרחב של חיבור, לימוד משותף וצמיחה רוחנית לכל המשפחה</p>
+          <h3 data-cms="home_card2_title">קהילה מחוברת</h3>
+          <p data-cms="home_card2_text">מרחב של חיבור, לימוד משותף וצמיחה רוחנית לכל המשפחה</p>
           <a href="pages/about.html" class="card-link">קראו עוד ←</a>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🌟</div>
-          <h3>אירועים מיוחדים</h3>
-          <p>כנסים, ימי עיון וערבי תרבות תורנית לאורך כל השנה</p>
+          <h3 data-cms="home_card3_title">אירועים מיוחדים</h3>
+          <p data-cms="home_card3_text">כנסים, ימי עיון וערבי תרבות תורנית לאורך כל השנה</p>
           <a href="pages/gallery.html" class="card-link">לגלריה ←</a>
         </div>
       </div>
@@ -96,8 +95,8 @@
   <section class="quote-banner">
     <div class="container">
       <blockquote>
-        "תלמוד תורה כנגד כולם"
-        <cite>– מסכת פאה</cite>
+        <span data-cms="home_quote">"תלמוד תורה כנגד כולם"</span>
+        <cite data-cms="home_quote_cite">– מסכת פאה</cite>
       </blockquote>
     </div>
   </section>
@@ -105,8 +104,8 @@
   <!-- CTA -->
   <section class="cta-section">
     <div class="container">
-      <h2>רוצים להיות חלק ממשפחת לומדי תורתך לשמה?</h2>
-      <p>פנו אלינו ונשמח לספר לכם על פעילויות העמותה</p>
+      <h2 data-cms="home_cta_title">רוצים להיות חלק ממשפחת לומדי תורתך לשמה?</h2>
+      <p data-cms="home_cta_text">פנו אלינו ונשמח לספר לכם על פעילויות העמותה</p>
       <a href="pages/contact.html" class="btn-primary">צרו קשר עכשיו</a>
     </div>
   </section>
@@ -114,9 +113,7 @@
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-logo">
-        <span class="logo-icon">✡</span> לומדי תורתך לשמה
-      </div>
+      <div class="footer-logo"><span class="logo-icon">🪔</span> לומדי תורתך לשמה</div>
       <p class="footer-tagline">מפיצים אור תורה לכל בית ישראל</p>
       <div class="footer-links">
         <a href="index.html">בית</a>
@@ -126,11 +123,12 @@
         <a href="pages/gallery.html">גלריה</a>
         <a href="pages/donations.html">תרומות</a>
         <a href="pages/contact.html">צור קשר</a>
-</div>
+      </div>
       <p class="footer-copy">© כל הזכויות שמורות לתהילה אלון | <a href="mailto:tehila54345@gmail.com">tehila54345@gmail.com</a></p>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/cms.js"></script>
 </body>
 </html>
