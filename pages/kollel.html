@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>הכולל – לומדי תורתך לשמה</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    .kollel-section { padding: 80px 0; }
+
+    .rosh-kollel-card {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 48px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(201,168,76,0.2);
+      margin-bottom: 72px;
+    }
+    .rosh-kollel-icon {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, var(--brown), var(--brown-mid));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      flex-shrink: 0;
+      border: 3px solid var(--gold);
+      box-shadow: 0 0 30px rgba(201,168,76,0.2);
+    }
+    .rosh-kollel-text h2 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 30px;
+      color: var(--brown);
+      margin-bottom: 6px;
+    }
+    .rosh-kollel-text .title-label {
+      color: var(--gold-dark);
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+    .rosh-kollel-text p {
+      color: var(--text-light);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .kollel-description {
+      background: var(--cream-dark);
+      border-radius: var(--radius);
+      padding: 48px;
+      margin-bottom: 72px;
+      border-right: 4px solid var(--gold);
+    }
+    .kollel-description h2 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 28px;
+      color: var(--brown);
+      margin-bottom: 20px;
+    }
+    .kollel-description p {
+      color: var(--text-light);
+      font-size: 16px;
+      line-height: 1.9;
+      margin-bottom: 14px;
+    }
+
+    .schedule-section { margin-bottom: 72px; }
+    .schedule-section h2 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 28px;
+      color: var(--brown);
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .schedule-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border-top: 3px solid var(--gold);
+      transition: var(--transition);
+    }
+    .schedule-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .schedule-card .time-icon { font-size: 36px; margin-bottom: 12px; }
+    .schedule-card h3 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 20px;
+      color: var(--brown);
+      margin-bottom: 8px;
+    }
+    .schedule-card p { color: var(--text-light); font-size: 15px; }
+    .schedule-card .time {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--brown);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 4px 16px;
+      border-radius: 20px;
+      margin-top: 10px;
+    }
+
+    .goals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+      margin-bottom: 72px;
+    }
+    .goal-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(201,168,76,0.15);
+      transition: var(--transition);
+    }
+    .goal-item:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .goal-item .goal-icon { font-size: 40px; margin-bottom: 16px; }
+    .goal-item h3 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 20px;
+      color: var(--brown);
+      margin-bottom: 10px;
+    }
+    .goal-item p { color: var(--text-light); font-size: 14px; line-height: 1.7; }
+
+    .join-cta {
+      background: var(--brown);
+      border-radius: var(--radius);
+      padding: 60px 48px;
+      text-align: center;
+      color: var(--cream);
+    }
+    .join-cta h2 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 32px;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+    }
+    .join-cta p {
+      color: rgba(250,246,239,0.75);
+      font-size: 17px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 768px) {
+      .rosh-kollel-card { flex-direction: column; text-align: center; padding: 32px 24px; }
+      .kollel-description, .join-cta { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="navbar">
+      <div class="logo">
+        <div class="logo-placeholder">
+          <span class="logo-icon">
+            <img src="../images/logo.png" alt="לומדי תורתך לשמה" class="logo-img" />
+          </span>
+        </div>
+        <span class="logo-text">לומדי תורתך לשמה</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html">בית</a></li>
+        <li><a href="about.html">אודות</a></li>
+        <li><a href="kollel.html" class="active">הכולל</a></li>
+        <li><a href="shiurim.html">שיעורי תורה</a></li>
+        <li><a href="gallery.html">גלריה</a></li>
+        <li><a href="donations.html">תרומות</a></li>
+        <li><a href="contact.html">צור קשר</a></li>
+</ul>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">בית</a>
+      <a href="about.html">אודות</a>
+      <a href="kollel.html" class="active">הכולל</a>
+      <a href="shiurim.html">שיעורי תורה</a>
+      <a href="gallery.html">גלריה</a>
+      <a href="donations.html">תרומות</a>
+      <a href="contact.html">צור קשר</a>
+</div>
+  </header>
+
+  <div class="page-hero">
+    <h1>הכולל</h1>
+    <p>מרכז לימוד ועיון – כולל נץ בעיר אלעד</p>
+  </div>
+
+  <section class="kollel-section">
+    <div class="container">
+
+      <!-- ראש הכולל -->
+      <div class="rosh-kollel-card">
+        <div class="rosh-kollel-icon">👤</div>
+        <div class="rosh-kollel-text">
+          <div class="title-label">ראש הכולל</div>
+          <h2>הרב יוסף יגאל אלון שליט"א</h2>
+          <p>
+            הרב אלון עומד בראש כולל "לומדי תורתך לשמה" ומנחה את לומדי הכולל בלימוד תורה
+            לשמה, בהעמקה הלכתית ובהפצת אור התורה בקהילה. תחת הנהגתו מתקיים בכולל סדר
+            לימוד יסודי ומאורגן לאורך כל ימי השבוע.
+          </p>
+        </div>
+      </div>
+
+      <!-- אודות הכולל -->
+      <div class="kollel-description">
+        <h2>אודות הכולל</h2>
+        <p>
+          כולל "לומדי תורתך לשמה" פועל בעיר אלעד ומשמש מרכז תורני מרכזי לאברכים
+          המבקשים ללמוד תורה לשמה – מתוך אהבה, מסירות ורצון אמיתי לגדול בתורה ויראת שמים.
+        </p>
+        <p>
+          הכולל מתנהל במתכונת של כולל נץ – לומדים מתחילים את יומם עם שחר ומקדישים שעות
+          ארוכות ללימוד עיוני ומעמיק. הסדר מאפשר לאברכים לשלב בין חיי משפחה מלאים לבין
+          לימוד תורה ברמה גבוהה.
+        </p>
+        <p>
+          הכולל מהווה גם מוקד רוחני לקהילה הסובבת – שיעורים, הרצאות וייעוץ הלכתי פתוחים
+          לכלל הציבור לאורך השנה.
+        </p>
+      </div>
+
+      <!-- לוח זמנים -->
+      <div class="schedule-section">
+        <div class="section-title">
+          <span class="ornament">❧</span>
+          <h2>סדר הלימוד</h2>
+          <span class="ornament">❧</span>
+        </div>
+        <div class="schedule-grid">
+          <div class="schedule-card">
+            <div class="time-icon">🌅</div>
+            <h3>תפילת נץ</h3>
+            <p>תפילת שחרית בנץ החמה</p>
+            <span class="time">נץ החמה</span>
+          </div>
+          <div class="schedule-card">
+            <div class="time-icon">📖</div>
+            <h3>סדר ראשון</h3>
+            <p>לימוד עיוני בגמרא ופוסקים</p>
+            <span class="time">לאחר תפילה</span>
+          </div>
+          <div class="schedule-card">
+            <div class="time-icon">📚</div>
+            <h3>סדר שני</h3>
+            <p>לימוד הלכה למעשה</p>
+            <span class="time">בצהריים</span>
+          </div>
+          <div class="schedule-card">
+            <div class="time-icon">🕯️</div>
+            <h3>שיעור כולל</h3>
+            <p>שיעור כללי מפי ראש הכולל</p>
+            <span class="time">בערב</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- מטרות הכולל -->
+      <div class="section-title">
+        <span class="ornament">❧</span>
+        <h2>מטרות הכולל</h2>
+        <span class="ornament">❧</span>
+      </div>
+      <div class="goals-grid">
+        <div class="goal-item">
+          <div class="goal-icon">📜</div>
+          <h3>תורה לשמה</h3>
+          <p>טיפוח אהבת התורה ולימוד מתוך מסירות וטהרת הכוונה</p>
+        </div>
+        <div class="goal-item">
+          <div class="goal-icon">⚖️</div>
+          <h3>הלכה למעשה</h3>
+          <p>העמקה בפסיקת הלכה ויישומה בחיי היומיום</p>
+        </div>
+        <div class="goal-item">
+          <div class="goal-icon">🌟</div>
+          <h3>הפצת תורה</h3>
+          <p>הנגשת לימוד התורה לכלל הציבור בקהילה ומחוצה לה</p>
+        </div>
+        <div class="goal-item">
+          <div class="goal-icon">🤝</div>
+          <h3>חיזוק הקהילה</h3>
+          <p>שיעורים ציבוריים ופעילות לחיזוק הרוח התורנית בעיר אלעד</p>
+        </div>
+      </div>
+
+      <!-- הצטרפות -->
+      <div class="join-cta">
+        <h2>מעוניינים להצטרף לכולל?</h2>
+        <p>נשמח לשמוע מכם ולספר על אפשרויות ההצטרפות ותנאי הקבלה</p>
+        <a href="contact.html" class="btn-primary" style="display:inline-block;">צרו קשר עכשיו ←</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="quote-banner">
+    <div class="container">
+      <blockquote>
+        "וְהָגִיתָ בּוֹ יוֹמָם וָלָיְלָה"
+        <cite>– יהושע א, ח</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-logo"><span class="logo-icon">🪔</span> לומדי תורתך לשמה</div>
+      <p class="footer-tagline">מפיצים אור תורה לכל בית ישראל</p>
+      <div class="footer-links">
+        <a href="../index.html">בית</a>
+        <a href="about.html">אודות</a>
+        <a href="kollel.html" class="active">הכולל</a>
+        <a href="shiurim.html">שיעורי תורה</a>
+        <a href="gallery.html">גלריה</a>
+        <a href="donations.html">תרומות</a>
+        <a href="contact.html">צור קשר</a>
+</div>
+      <p class="footer-copy">© כל הזכויות שמורות לתהילה אלון | <a href="mailto:tehila54345@gmail.com">tehila54345@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

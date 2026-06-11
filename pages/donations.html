@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>תרומות – לומדי תורתך לשמה</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    .donations-section { padding: 80px 0; }
+
+    .donation-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 64px;
+    }
+    .donation-intro h2 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 32px;
+      color: var(--brown);
+      margin-bottom: 16px;
+    }
+    .donation-intro p {
+      color: var(--text-light);
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    .donation-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin-bottom: 64px;
+    }
+    .donation-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 40px 28px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 2px solid rgba(201,168,76,0.15);
+      transition: var(--transition);
+      position: relative;
+    }
+    .donation-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--gold);
+    }
+    .donation-card.featured {
+      border-color: var(--gold);
+      background: linear-gradient(160deg, #fff 60%, #fdf8ee);
+    }
+    .donation-card.featured::before {
+      content: '⭐ מומלץ';
+      position: absolute;
+      top: -14px;
+      right: 50%;
+      transform: translateX(50%);
+      background: var(--gold);
+      color: var(--brown);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 20px;
+    }
+    .donation-card .amount {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--brown);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .donation-card .currency {
+      font-size: 22px;
+      color: var(--gold-dark);
+      margin-bottom: 12px;
+    }
+    .donation-card h3 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 20px;
+      color: var(--brown);
+      margin-bottom: 10px;
+    }
+    .donation-card p {
+      color: var(--text-light);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .nedarim-box {
+      background: var(--brown);
+      border-radius: var(--radius);
+      padding: 60px 48px;
+      text-align: center;
+      margin-bottom: 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .nedarim-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .nedarim-box h2 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 30px;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .nedarim-box p {
+      color: rgba(250,246,239,0.75);
+      font-size: 16px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .nedarim-box .coming-soon-badge {
+      display: inline-block;
+      background: rgba(201,168,76,0.2);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold-light);
+      font-size: 13px;
+      padding: 6px 20px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .nedarim-box .btn-primary {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+      position: relative;
+    }
+    .nedarim-note {
+      color: rgba(250,246,239,0.5);
+      font-size: 13px;
+      margin-top: 16px;
+      position: relative;
+    }
+
+    .why-donate {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+    .why-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .why-item .why-icon {
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+    .why-item h3 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 17px;
+      color: var(--brown);
+      margin-bottom: 6px;
+    }
+    .why-item p { color: var(--text-light); font-size: 14px; line-height: 1.6; }
+
+    .bank-details {
+      background: var(--cream-dark);
+      border-radius: var(--radius);
+      padding: 40px 48px;
+      border-right: 4px solid var(--gold);
+      margin-bottom: 64px;
+    }
+    .bank-details h2 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 24px;
+      color: var(--brown);
+      margin-bottom: 24px;
+    }
+    .bank-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .bank-row:last-child { border-bottom: none; }
+    .bank-label {
+      font-weight: 600;
+      color: var(--brown);
+      font-size: 15px;
+      min-width: 140px;
+    }
+    .bank-value {
+      color: var(--text-light);
+      font-size: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .nedarim-box, .bank-details { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="navbar">
+      <div class="logo">
+        <div class="logo-placeholder">
+          <span class="logo-icon">
+            <img src="../images/logo.png" alt="לומדי תורתך לשמה" class="logo-img" />
+          </span>
+        </div>
+        <span class="logo-text">לומדי תורתך לשמה</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html">בית</a></li>
+        <li><a href="about.html">אודות</a></li>
+        <li><a href="kollel.html">הכולל</a></li>
+        <li><a href="shiurim.html">שיעורי תורה</a></li>
+        <li><a href="gallery.html">גלריה</a></li>
+        <li><a href="donations.html" class="active">תרומות</a></li>
+        <li><a href="contact.html">צור קשר</a></li>
+</ul>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">בית</a>
+      <a href="about.html">אודות</a>
+      <a href="kollel.html">הכולל</a>
+      <a href="shiurim.html">שיעורי תורה</a>
+      <a href="gallery.html">גלריה</a>
+      <a href="donations.html" class="active">תרומות</a>
+      <a href="contact.html">צור קשר</a>
+</div>
+  </header>
+
+  <div class="page-hero">
+    <h1>תרומות</h1>
+    <p>היו שותפים בהפצת אור התורה – כל תרומה מחזקת את הכולל</p>
+  </div>
+
+  <section class="donations-section">
+    <div class="container">
+
+      <!-- הקדמה -->
+      <div class="donation-intro">
+        <h2>שותפות בתורה</h2>
+        <p>
+          תרומתכם מאפשרת לאברכי הכולל להמשיך וללמוד תורה לשמה, ומסייעת לנו להפיץ
+          את אור התורה לכלל הציבור. כל תורם נעשה שותף בזכות הלימוד ומעלה את כל ישראל.
+        </p>
+      </div>
+
+      <!-- הצעות תרומה -->
+      <div class="section-title">
+        <span class="ornament">❧</span>
+        <h2>בחרו סכום</h2>
+        <span class="ornament">❧</span>
+      </div>
+      <div class="donation-options">
+        <div class="donation-card">
+          <div class="amount">36</div>
+          <div class="currency">₪</div>
+          <h3>שותף יומי</h3>
+          <p>תרומה חד-פעמית לזיכוי הרבים</p>
+        </div>
+        <div class="donation-card featured">
+          <div class="amount">180</div>
+          <div class="currency">₪</div>
+          <h3>שותף שבועי</h3>
+          <p>תמיכה שבועית בלימוד הכולל</p>
+        </div>
+        <div class="donation-card">
+          <div class="amount">500</div>
+          <div class="currency">₪</div>
+          <h3>שותף חודשי</h3>
+          <p>שותפות קבועה בתורה לאורך השנה</p>
+        </div>
+        <div class="donation-card">
+          <div class="amount">תרומה</div>
+          <div class="currency" style="font-size:16px; margin-top:4px;">לבחירתכם</div>
+          <h3>סכום חופשי</h3>
+          <p>כל סכום מתקבל בברכה ובאהבה</p>
+        </div>
+      </div>
+
+      <!-- נדרים פלוס -->
+      <div class="nedarim-box">
+        <h2>תרומה מאובטחת דרך נדרים פלוס</h2>
+        <div class="coming-soon-badge">⏳ בקרוב – קישור בהכנה</div>
+        <p>בקרוב תוכלו לתרום בקלות ובאבטחה מלאה דרך מערכת נדרים פלוס</p>
+        <p>עד אז – ניתן לתרום בהעברה בנקאית או ליצור קשר ישיר</p>
+        <a href="#" class="btn-primary" style="display:inline-block; margin-top: 8px;">
+          לתרומה דרך נדרים פלוס ←
+        </a>
+        <p class="nedarim-note">* הקישור יופעל בקרוב. לבינתיים – ראו פרטי העברה בנקאית למטה</p>
+      </div>
+
+      <!-- למה לתרום -->
+      <div class="section-title">
+        <span class="ornament">❧</span>
+        <h2>למה כדאי לתרום?</h2>
+        <span class="ornament">❧</span>
+      </div>
+      <div class="why-donate">
+        <div class="why-item">
+          <div class="why-icon">📖</div>
+          <div>
+            <h3>שותפות בתורה</h3>
+            <p>התורם נעשה שותף בכל שעה של לימוד תורה לשמה</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🌟</div>
+          <div>
+            <h3>זיכוי הרבים</h3>
+            <p>תרומתכם מאפשרת הפצת תורה לכל שכבות הציבור</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🏛️</div>
+          <div>
+            <h3>חיזוק הקהילה</h3>
+            <p>הכולל משמש עמוד תווך לחיי התורה בעיר אלעד</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">❤️</div>
+          <div>
+            <h3>מצוות צדקה</h3>
+            <p>תמיכה בתלמידי חכמים – מצווה גדולה ועצומה</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- פרטי בנק -->
+      <div class="bank-details">
+        <h2>💳 העברה בנקאית</h2>
+        <div class="bank-row">
+          <span class="bank-label">שם העמותה</span>
+          <span class="bank-value">לומדי תורתך לשמה</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">בנק</span>
+          <span class="bank-value">יש להשלים עם הנהלת הכולל</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">סניף</span>
+          <span class="bank-value">יש להשלים עם הנהלת הכולל</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">חשבון</span>
+          <span class="bank-value">יש להשלים עם הנהלת הכולל</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">לפרטים נוספים</span>
+          <span class="bank-value"><a href="contact.html" style="color: var(--gold-dark); font-weight:600;">צרו קשר ←</a></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="quote-banner">
+    <div class="container">
+      <blockquote>
+        "כָּל הַמְסַיֵּעַ לְלוֹמְדֵי תוֹרָה – מַעֲלֶה עָלָיו הַכָּתוּב כְּאִלּוּ הוּא עַצְמוֹ לָמַד"
+        <cite>– מדרש</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-logo"><span class="logo-icon">🪔</span> לומדי תורתך לשמה</div>
+      <p class="footer-tagline">מפיצים אור תורה לכל בית ישראל</p>
+      <div class="footer-links">
+        <a href="../index.html">בית</a>
+        <a href="about.html">אודות</a>
+        <a href="kollel.html">הכולל</a>
+        <a href="shiurim.html">שיעורי תורה</a>
+        <a href="gallery.html">גלריה</a>
+        <a href="donations.html" class="active">תרומות</a>
+        <a href="contact.html">צור קשר</a>
+</div>
+      <p class="footer-copy">© כל הזכויות שמורות לתהילה אלון | <a href="mailto:tehila54345@gmail.com">tehila54345@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
